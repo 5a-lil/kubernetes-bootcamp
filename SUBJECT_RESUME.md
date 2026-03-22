@@ -19,9 +19,17 @@
 ---
 ### SHORTEN SUBJECT GLOBAL NOTIONS
 - [ ] K3d ?
-- [ ] K3s ?
+- [x] K3s ?
 - [ ] "K3s and its Ingress" ?
-- [ ] Vagrant ?
-- [ ] "set up a personal virtual machine with Vagrant and the distribution of your choice" ?
+- [x] Vagrant ?
+- [x] "set up a personal virtual machine with Vagrant and the distribution of your choice" ?
 - [ ] Kubernetes ?
 - [x] K8s ?
+
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib' >> /etc/apt/sources.list
+wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+sudo apt-get update
+sudo apt-get install virtualbox-7.1
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install vagrant
