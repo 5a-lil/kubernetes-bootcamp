@@ -141,8 +141,7 @@ spec:
             name: app2-svc
             port:
               number: 80
-  - host: _
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
