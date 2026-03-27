@@ -114,6 +114,7 @@ metadata: # just metadata
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web # get interest in this weird key/value
 spec:
+  # IT DOESNT WORKS K3S INGRESS OVERRIDES IT
   # defaultBackend: # default service -> default route
   #  service:
   #    name: app3-svc
@@ -140,7 +141,7 @@ spec:
             name: app2-svc
             port:
               number: 80
-  - host: app3.com
+  - host: _
     http:
       paths:
       - path: /
