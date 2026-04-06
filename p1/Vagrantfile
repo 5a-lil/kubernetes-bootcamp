@@ -1,37 +1,43 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "generic/ubuntu2204"
+  config.vm.box = "debian/bookworm64"
 
   # VM 1
-  config.vm.define "server" do |server|
+  config.vm.define "abalasubS" do |server|
     server.vm.network "private_network", ip: "192.168.56.111"
-    server.vm.hostname = "Server"
+    server.vm.hostname = "abalasubS"
     server.vm.provider "virtualbox" do |vb|
-      vb.name = "Server" 
+      vb.name = "abalasubS" 
       vb.memory = 1024
       vb.cpus = 1
     end
     server.vm.provision "shell", inline: <<-SHELL
       sudo apt-get update
       sudo apt-get install -y curl
-      curl -sfL https://get.k3s.io | sh -
+      curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --node-ip=192.168.56.111 --flannel-iface=eth1" sh -
+      while [ ! -f /var/lib/rancher/k3s/server/node-token ]; do
+        echo "Attente de k3s..."
+        sleep 5
+      done
+      sudo cat /var/lib/rancher/k3s/server/node-token > /vagrant/token
     SHELL
   end
 
   # VM 2
-  config.vm.define "worker" do |worker|
+  config.vm.define "abalasubSW" do |worker|
     worker.vm.network "private_network", ip: "192.168.56.110"
-    worker.vm.hostname = "ServerWorker"
+    worker.vm.hostname = "abalasubSW"
 
     worker.vm.provider "virtualbox" do |vb|
-      vb.name = "ServerWorker"
+      vb.name = "abalasubSW"
       vb.memory = 1024
       vb.cpus = 1
     end
     worker.vm.provision "shell", inline: <<-SHELL
       sudo apt-get update
       sudo apt-get install -y curl
-      curl -sfL https://get.k3s.io | K3S_URL="https://192.168.56.111:6443" K3S_TOKEN="K105965b87c53f2d8c6d687d1f4055bb9e8b994a3c4282005f9073a886073ddd695::server:bf2e135f37ada91ff8e0cb80d344c86d" sh -
+      TOKEN=$(cat /vagrant/token)
+      curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent --node-ip=192.168.56.110" K3S_URL="https://192.168.56.111:6443" K3S_TOKEN=$TOKEN sh -
     SHELL
   end
 
