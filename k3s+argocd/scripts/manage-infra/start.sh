@@ -3,7 +3,7 @@ k3d cluster create my-cluster --port 8888:80@loadbalancer
 kubectl create ns argocd 
 kubectl create ns dev
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-kubectl apply -f ./argocd-app/myapp.yaml
+kubectl apply -f ./confs/argocd_setup.yaml
 
 echo "⏳ Waiting for Argo CD (2 mins)..."
 kubectl wait --for=condition=ready pod -n argocd --selector=app.kubernetes.io/name=argocd-server --timeout=180s

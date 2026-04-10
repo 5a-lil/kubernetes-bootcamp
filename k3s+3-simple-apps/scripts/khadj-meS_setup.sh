@@ -16,12 +16,12 @@ sudo chown -R vagrant:vagrant /home/vagrant/.kube/config \
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 
 # Copying from source files
-cp /vagrant/apps.yaml ./apps.yaml
+cp /vagrant/confs/apps.yaml ./apps.yaml
 echo "[PROVISION-LOG] Copied apps.yaml from host files"
 
 # Appling the yaml file to make the depls
 echo "[PROVISION-LOG] Launching deployements..."
-kubectl apply -f apps.yaml
+kubectl apply -f ./confs/apps.yaml
 
 # Loop until everything is ready
 echo "[PROVISION-LOG] Starting curl loop"
