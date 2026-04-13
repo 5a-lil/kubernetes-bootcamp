@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install monitoring softwares
-sudo apt update && sudo apt install net-tools
+sudo apt update && sudo apt install -y curl net-tools
 
 # Install K3s on the master node
 curl -sfL https://get.k3s.io | sh -s - --node-ip 192.168.56.110
