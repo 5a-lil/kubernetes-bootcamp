@@ -21,7 +21,7 @@ echo "[PROVISION-LOG] Copied apps.yaml from host files"
 
 # Appling the yaml file to make the depls
 echo "[PROVISION-LOG] Launching deployements..."
-kubectl apply -f ./confs/apps.yaml
+kubectl apply -f ./apps.yaml
 
 # Loop until everything is ready
 echo "[PROVISION-LOG] Starting curl loop"
