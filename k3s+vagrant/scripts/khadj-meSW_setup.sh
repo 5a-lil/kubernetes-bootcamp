@@ -1,4 +1,6 @@
 #!/bin/bash
+# Installing curl
+sudo apt update && sudo apt install -y curl
 # Get the master node's IP from the arguments
 MASTER_IP=$1
 
