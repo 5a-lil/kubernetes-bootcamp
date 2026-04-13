@@ -14,7 +14,7 @@ install:
 	docker --version && \
 	k3d --version && \
 	argocd version --client --short && \
-	echo "== ✅ EVERYTHING WAS SUCCESSFULLY INSTALLED ✅ =="
+	echo "== ✅ Everything was successfully installed -> consider reboot to apply group changes ✅ =="
 
 d-install:
 	@./scripts/DESTROY.sh
