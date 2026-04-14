@@ -14,7 +14,7 @@ curl -fsSL https://get.docker.com | sudo sh
 sudo systemctl enable --now docker
 
 # Add user to docker group
-sudo usermod -aG docker $USER
+sudo adduser $USER docker
 
 echo "✅ Docker installed!"
 echo "🔄 Logout/login or run 'newgrp docker' to use without sudo"
