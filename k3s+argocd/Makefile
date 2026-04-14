@@ -6,6 +6,7 @@ d-build:
 	@./scripts/manage-infra/stop.sh
 
 install:
+	@sudo apt update && sudo apt install curl
 	@for f in ./scripts/installation/*.sh; do \
 		sudo bash "$$f"; \
 	done && \
