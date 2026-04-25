@@ -50,4 +50,4 @@ until curl -s localhost:8888 | grep -q '"status":"ok"'; do
 done
 
 echo "✅ Application is ready! Starting port-forward..."
-kubectl port-forward svc/argocd-server -n argocd 8081:443
+kubectl port-forward --address 0.0.0.0 svc/argocd-server -n argocd 8081:443
