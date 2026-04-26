@@ -18,12 +18,12 @@
 - group.
 ---
 ### SHORTEN SUBJECT GLOBAL NOTIONS
-- [ ] K3d ?
+- [x] K3d ?
 - [x] K3s ?
-- [ ] "K3s and its Ingress" ?
+- [x] "K3s and its Ingress" ?
 - [x] Vagrant ?
 - [x] "set up a personal virtual machine with Vagrant and the distribution of your choice" ?
-- [ ] Kubernetes ?
+- [x] Kubernetes ?
 - [x] K8s ?
 
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib' >> /etc/apt/sources.list
