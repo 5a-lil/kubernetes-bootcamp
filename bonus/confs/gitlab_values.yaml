@@ -1,0 +1,44 @@
+global:
+  edition: ce
+  hosts:
+    domain: localhost
+    https: false
+  ingress:
+    class: traefik
+  ingress:
+    configureCertmanager: false
+
+certmanager-issuer:
+  enabled: false
+
+nginx-ingress:
+  install: false
+  enabled: false
+
+gitlab-runner:
+  install: false
+  enabled: false
+
+postgresql:
+  metrics:
+    enabled: false
+  resources:
+    requests:
+      memory: 256Mi
+
+redis:
+  metrics:
+    enabled: false
+  resources:
+    requests:
+      memory: 128Mi
+
+gitlab:
+  webservice:
+    resources:
+      requests:
+        memory: 1Gi
+  sidekiq:
+    resources:
+      requests:
+        memory: 500Mi
