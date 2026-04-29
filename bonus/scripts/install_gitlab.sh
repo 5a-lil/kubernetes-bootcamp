@@ -21,10 +21,4 @@ sleep 10
 
 echo ""
 echo "✅ GitLab ready at http://localhost:8080"
-echo "Login: root / $PASSWORD"
-echo ""
-echo "During defense:"
-echo "1. Create project 'argocd-config'"
-echo "2. Upload Part 3 manifests"
-echo "3. Run: argocd repo add http://gitlab-webservice-default.gitlab.svc.cluster.local/root/argocd-config.git --username root --password $PASSWORD --insecure-skip-server-verification --name local-gitlab"
-echo "4. Run: argocd app set wil-app --repo http://gitlab-webservice-default.gitlab.svc.cluster.local/root/argocd-config.git --path . --revision master"
+echo "REPO URL FOR ARGOCD -> http://gitlab-webservice-default.gitlab.svc.cluster.local:8181/root/<repo-name>.git"
